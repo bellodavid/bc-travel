@@ -604,6 +604,8 @@ nav {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    position: absolute;
+    align-self: center;
   }
 
   .modalContent {
