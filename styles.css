@@ -604,8 +604,6 @@ nav {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    position: absolute;
-    align-self: center;
   }
 
   .modalContent {
@@ -616,7 +614,7 @@ nav {
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-    position: relative;
+    position: absolute;
   }
 
   .closeModal {
