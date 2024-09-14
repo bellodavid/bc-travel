@@ -63,21 +63,26 @@
         <div id="checkoutStep1" class="checkoutStep">
           <div class="roomDetails">
             <div class="roomDetailsHeader">
-              <span class="roomDetailsTitle">Room Details</span>
+              <span class="roomDetailsTitle">Travel Details</span>
               <span class="roomDetailsIcon">🏨</span>
             </div>
             <div class="roomDetailsContent">
               <p>
-                <strong>Check-in:</strong>
+                <strong>Departure City/Location: </strong>
                 <span id="modalCheckIn"></span>
               </p>
               <p>
-                <strong>Check-out:</strong>
+                <strong>Destination City/Location: </strong>
                 <span id="modalCheckOut"></span>
               </p>
-              <p><strong>Guests:</strong> <span id="modalGuests"></span></p>
               <p>
-                <strong>Total Nights:</strong>
+                <strong>Departure Date: </strong> <span id="modalGuests"></span>
+              </p>
+              <p>
+                <strong>Departure Date: </strong> <span id="modalGuests"></span>
+              </p>
+              <p>
+                <strong>Return Date:</strong>
                 <span id="modalNights"></span>
               </p>
             </div>
@@ -90,7 +95,11 @@
             <label for="name">Name (Optional)</label>
             <input type="text" id="name" placeholder="Enter your name" />
           </div>
-          <button onclick="setCheckoutStep(2)" class="nextButton">
+          <button
+            onclick="setCheckoutStep(2)"
+            class="nextButton"
+            style="margin-top: 10px"
+          >
             Next <span class="arrowIcon">→</span>
           </button>
         </div>
@@ -164,6 +173,7 @@
             onclick="toggleQR()"
             class="toggleQrButton"
             id="toggleQrButton"
+            style="margin-top: 10px"
           >
             Show QR Code
           </button>
