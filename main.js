@@ -20,6 +20,20 @@ const scrollRevealOption = {
   duration: 1000,
 };
 
+function handlePaymentConfirmation() {
+  const button = document.getElementById("paymentConfirmButton");
+  button.textContent = "Processing...";
+  button.classList.add("processing");
+
+  // Simulate a 5-second delay to mimic loading
+  setTimeout(() => {
+    button.textContent = "Completed";
+    button.classList.remove("processing");
+    button.classList.add("completed");
+    button.style.backgroundColor = "green";
+  }, 5000);
+}
+
 function handleBookNowClick() {
   const modal = document.getElementById("checkoutModal");
   modal.style.display = "block";
