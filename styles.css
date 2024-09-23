@@ -773,4 +773,8 @@ nav {
     font-weight: bold;
     color: var(--primary-color);
   }
+  .footer-text {
+    text-align: center;
+    color: grey;
+  }
 }

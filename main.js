@@ -81,7 +81,7 @@ function handleBookNowClick(event) {
   setCheckoutStep(1);
 
   // Populate the modal with package details
-  document.getElementById("modalCheckIn").textContent = "To be filled by user";
+  document.getElementById("destination").textContent = "To be filled by user";
   document.getElementById("modalCheckOut").textContent = "To be filled by user";
   document.getElementById("modalGuests").textContent = "To be filled by user";
   document.getElementById("modalNights").textContent = "To be filled by user";
