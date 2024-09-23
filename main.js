@@ -14,6 +14,28 @@ navLinks.addEventListener("click", (e) => {
   menuBtnIcon.setAttribute("class", "ri-menu-line");
 });
 
+function handleCopy(text) {
+  if (navigator.clipboard) {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("Copied to clipboard: " + text);
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
+  } else {
+    // Fallback for browsers that don't support the Clipboard API
+    const tempTextArea = document.createElement("textarea");
+    tempTextArea.value = text;
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempTextArea);
+    alert("Copied to clipboard: " + text);
+  }
+}
+
 const scrollRevealOption = {
   distance: "50px",
   origin: "bottom",
@@ -35,6 +57,21 @@ function handlePaymentConfirmation() {
 }
 
 function handleBookNowClick() {
+  // Get the button that was clicked
+  const button = event.target;
+
+  // Find the parent div
+  const parentDiv = button.closest("div");
+
+  // Find the h3 element within the parent div
+  const priceElement = parentDiv.querySelector("h3");
+
+  // Get the text content of the h3 element (the price)
+  const priceText = priceElement.textContent;
+
+  // Remove the dollar sign and convert to a number
+  const price = parseFloat(priceText.replace("$", ""));
+
   const modal = document.getElementById("checkoutModal");
   modal.style.display = "block";
 
@@ -42,13 +79,25 @@ function handleBookNowClick() {
   setCheckoutStep(1);
 
   // Calculate the amount
-  const price = 100; // Replace with actual price
-  const discount = 10; // Replace with actual discount
+  const discount = 10; // Replace with actual discount if needed
   const discountPrice = price - (price / 100) * discount;
   const nights = calcNoOfDays();
   const amount = nights * discountPrice;
 
   document.getElementById("amount").value = amount.toFixed(2);
+}
+
+// Helper function to calculate number of days (you should implement this based on your needs)
+function calcNoOfDays() {
+  // Implement your logic to calculate the number of days
+  // For now, returning a placeholder value of 1
+  return 1;
+}
+
+// Function to set checkout step (you should implement this based on your needs)
+function setCheckoutStep(step) {
+  // Implement your logic to set the checkout step
+  console.log(`Setting checkout step to ${step}`);
 }
 
 function setCheckoutStep(step) {
