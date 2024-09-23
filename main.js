@@ -43,6 +43,16 @@ const scrollRevealOption = {
 };
 
 function handlePaymentConfirmation() {
+  const paymentStatus = document.getElementById("paymentStatus");
+  const paymentConfirmButton = document.getElementById("paymentConfirmButton");
+
+  paymentStatus.style.display = "block";
+  paymentStatus.textContent = "Verifying payment...";
+  paymentStatus.classList.add("verifying");
+  paymentConfirmButton.disabled = true;
+
+  // Simulate payment verification (replace with actual verification logic)
+
   const button = document.getElementById("paymentConfirmButton");
   button.textContent = "Processing...";
   button.classList.add("processing");
