@@ -210,32 +210,6 @@ const swiper = new Swiper(".swiper", {
   },
 });
 
-// JavaScript for handling payment confirmation and success modal
-let timerInterval;
-
-function handlePaymentConfirmation() {
-  const paymentStatus = document.getElementById("paymentStatus");
-  const paymentConfirmButton = document.getElementById("paymentConfirmButton");
-
-  paymentStatus.style.display = "block";
-  paymentStatus.textContent = "Verifying payment...";
-  paymentStatus.classList.add("verifying");
-  paymentConfirmButton.disabled = true;
-
-  // Simulate payment verification (replace with actual verification logic)
-  setTimeout(() => {
-    paymentStatus.textContent = "Payment verified!";
-    paymentStatus.classList.remove("verifying");
-    paymentStatus.classList.add("success");
-
-    // Show success modal after a brief delay
-    setTimeout(() => {
-      closeModal();
-      showSuccessModal();
-    }, 1500);
-  }, 3000); // Simulated 3-second verification
-}
-
 function showSuccessModal() {
   const successModal = document.getElementById("successModal");
   successModal.style.display = "flex";
@@ -244,35 +218,4 @@ function showSuccessModal() {
 function closeSuccessModal() {
   const successModal = document.getElementById("successModal");
   successModal.style.display = "none";
-}
-
-function startTimer(duration, display) {
-  let timer = duration,
-    minutes,
-    seconds;
-  clearInterval(timerInterval);
-
-  timerInterval = setInterval(function () {
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
-
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    display.textContent = minutes + ":" + seconds;
-
-    if (--timer < 0) {
-      clearInterval(timerInterval);
-      display.textContent = "00:00";
-    }
-  }, 1000);
-}
-
-// Start the timer when the checkout modal is opened
-function setCheckoutStep(step) {
-  if (step === 2) {
-    const timeRemaining = document.getElementById("timeRemaining");
-    startTimer(1200, timeRemaining); // 20 minutes = 1200 seconds
-  }
-  // ... rest of the setCheckoutStep function
 }
