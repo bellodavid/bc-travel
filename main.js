@@ -56,9 +56,12 @@ function handlePaymentConfirmation() {
   }, 5000);
 }
 
-function handleBookNowClick() {
+function handleBookNowClick(event) {
+  // Prevent the default action of the button
+  event.preventDefault();
+
   // Get the button that was clicked
-  const button = event.target;
+  const button = event.currentTarget;
 
   // Find the parent div
   const parentDiv = button.closest("div");
@@ -86,6 +89,27 @@ function handleBookNowClick() {
 
   document.getElementById("amount").value = amount.toFixed(2);
 }
+
+// Helper function to calculate number of days (you should implement this based on your needs)
+function calcNoOfDays() {
+  // Implement your logic to calculate the number of days
+  // For now, returning a placeholder value of 1
+  return 1;
+}
+
+// Function to set checkout step (you should implement this based on your needs)
+function setCheckoutStep(step) {
+  // Implement your logic to set the checkout step
+  console.log(`Setting checkout step to ${step}`);
+}
+
+// Add event listener to all "Book Now" buttons
+document.addEventListener("DOMContentLoaded", function () {
+  const bookNowButtons = document.querySelectorAll(".btn");
+  bookNowButtons.forEach((button) => {
+    button.addEventListener("click", handleBookNowClick);
+  });
+});
 
 // Helper function to calculate number of days (you should implement this based on your needs)
 function calcNoOfDays() {
