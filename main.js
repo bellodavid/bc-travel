@@ -57,72 +57,65 @@ function handlePaymentConfirmation() {
 }
 
 function handleBookNowClick(event) {
-  // Prevent the default action of the button
   event.preventDefault();
 
   // Get the button that was clicked
   const button = event.currentTarget;
 
-  // Find the parent div
-  const parentDiv = button.closest("div");
+  // Find the parent card
+  const card = button.closest(".package__card");
 
-  // Find the h3 element within the parent div
-  const priceElement = parentDiv.querySelector("h3");
+  // Extract information from the card
+  const packageName = card.querySelector("h4").textContent;
+  const packageDescription = card.querySelector("p").textContent;
+  const price = card.querySelector("h3").textContent;
 
-  // Get the text content of the h3 element (the price)
-  const priceText = priceElement.textContent;
+  // Get the image source
+  const imageSrc = card.querySelector("img").src;
 
-  // Remove the dollar sign and convert to a number
-  const price = parseFloat(priceText.replace("$", ""));
-
+  // Open the modal
   const modal = document.getElementById("checkoutModal");
   modal.style.display = "block";
 
   // Set initial checkout step
   setCheckoutStep(1);
 
-  // Calculate the amount
-  const discount = 10; // Replace with actual discount if needed
-  const discountPrice = price - (price / 100) * discount;
-  const nights = calcNoOfDays();
-  const amount = nights * discountPrice;
+  // Populate the modal with package details
+  document.getElementById("modalCheckIn").textContent = "To be filled by user";
+  document.getElementById("modalCheckOut").textContent = "To be filled by user";
+  document.getElementById("modalGuests").textContent = "To be filled by user";
+  document.getElementById("modalNights").textContent = "To be filled by user";
 
-  document.getElementById("amount").value = amount.toFixed(2);
-}
+  // Update the room details in the modal
+  const roomDetailsTitle = modal.querySelector(".roomDetailsTitle");
+  roomDetailsTitle.textContent = packageName;
 
-// Helper function to calculate number of days (you should implement this based on your needs)
-function calcNoOfDays() {
-  // Implement your logic to calculate the number of days
-  // For now, returning a placeholder value of 1
-  return 1;
-}
+  const roomDetailsContent = modal.querySelector(".roomDetailsContent");
+  const descriptionParagraph = document.createElement("p");
+  descriptionParagraph.innerHTML = `<strong>Description:</strong> ${packageDescription}`;
+  roomDetailsContent.insertBefore(
+    descriptionParagraph,
+    roomDetailsContent.firstChild
+  );
 
-// Function to set checkout step (you should implement this based on your needs)
-function setCheckoutStep(step) {
-  // Implement your logic to set the checkout step
-  console.log(`Setting checkout step to ${step}`);
+  // Set the amount
+  const amountInput = document.getElementById("amount");
+  amountInput.value = price.replace("$", "");
+
+  // You can also update the modal's image if desired
+  // const modalImage = modal.querySelector('.roomImage'); // Assuming you have an image element in your modal
+  // if (modalImage) {
+  //   modalImage.src = imageSrc;
+  // }
 }
 
 // Add event listener to all "Book Now" buttons
 document.addEventListener("DOMContentLoaded", function () {
-  const bookNowButtons = document.querySelectorAll(".btn");
+  const bookNowButtons = document.querySelectorAll(".package__card .btn");
   bookNowButtons.forEach((button) => {
     button.addEventListener("click", handleBookNowClick);
   });
 });
-
-// Helper function to calculate number of days (you should implement this based on your needs)
-function calcNoOfDays() {
-  // Implement your logic to calculate the number of days
-  // For now, returning a placeholder value of 1
-  return 1;
-}
-
-// Function to set checkout step (you should implement this based on your needs)
-function setCheckoutStep(step) {
-  // Implement your logic to set the checkout step
-  console.log(`Setting checkout step to ${step}`);
-}
 
 function setCheckoutStep(step) {
   const step1Content = document.getElementById("checkoutStep1");
