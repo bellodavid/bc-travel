@@ -109,30 +109,28 @@
         </div>
         <div id="checkoutStep2" class="checkoutStep" style="display: none">
           <div class="roomDetails">
-            <!-- <div class="roomDetailsHeader">
+            <div class="roomDetailsHeader">
               <span class="roomDetailsTitle">Travel Details</span>
               <span class="roomDetailsIcon">🏨</span>
             </div>
             <div class="roomDetailsContent">
               <p>
-                <strong>Departure City/Location: </strong>
+                <strong>Departure City/Location: London</strong>
                 <span id="modalCheckIn"></span>
               </p>
               <p>
                 <strong>Destination City/Location: </strong>
-                <span id="modalCheckOut"></span>
+                <span id="modalCheckOut">Thailand City</span>
               </p>
               <p>
-                <strong>Departure Date: </strong> <span id="modalGuests"></span>
+                <strong>Departure Date:</strong>
+                <span id="modalGuests"> 02-08-2024</span>
               </p>
               <p>
-                <strong>Departure Date: </strong> <span id="modalGuests"></span>
+                <strong>Return Date: </strong>
+                <span id="modalGuests">21-08-2024</span>
               </p>
-              <p>
-                <strong>Return Date:</strong>
-                <span id="modalNights"></span>
-              </p>
-            </div> -->
+            </div>
           </div>
           <div class="amountDisplay">
             <label for="amount">Amount (USDT)</label>
@@ -170,7 +168,10 @@
             <label for="senderAddress"
               >Your transaction hash (for verification)</label
             >
-            <input id="senderAddress" placeholder="Enter your transaction hash" />
+            <input
+              id="senderAddress"
+              placeholder="Enter your transaction hash"
+            />
           </div>
           <button
             onclick="handleCopy('https://example.com/pay?address=0x1234567890123456789012345678901234567890&amount=' + document.getElementById('amount').value + '&currency=USDT')"

@@ -161,7 +161,24 @@ function startTimer() {
 
 function closeModal() {
   const modal = document.getElementById("checkoutModal");
+
+  // Hide the modal
   modal.style.display = "none";
+
+  // Clear all form inputs (if it's a form)
+  const form = modal.querySelector("form");
+  if (form) {
+    form.reset(); // Resets the form to its initial state
+  }
+
+  // Alternatively, clear specific input fields
+  const inputs = modal.querySelectorAll("input, select, textarea");
+  inputs.forEach((input) => (input.value = ""));
+
+  // Clear session storage (if you are storing data there)
+  sessionStorage.removeItem("modalData"); // Remove specific data
+  // Or, if you want to clear all session storage data related to the modal:
+  // sessionStorage.clear();
 }
 
 ScrollReveal().reveal(".header__container h1", {
