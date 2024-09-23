@@ -776,5 +776,6 @@ nav {
   .footer-text {
     text-align: center;
     color: grey;
+    font-size: small;
   }
 }
