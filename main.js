@@ -80,30 +80,24 @@ function handleBookNowClick(event) {
   // Set initial checkout step
   setCheckoutStep(1);
 
-  // Populate the modal with package details
-  // document.getElementById("destination").textContent = "To be filled by user";
-  // document.getElementById("modalCheckOut").textContent = "To be filled by user";
-  // document.getElementById("modalGuests").textContent = "To be filled by user";
-  // document.getElementById("modalNights").textContent = "To be filled by user";
+  // Clear the previous content in the modal
+  const roomDetailsContent = modal.querySelector(".roomDetailsContent");
+  roomDetailsContent.innerHTML = ""; // Clear previous content
 
   // Update the room details in the modal
   const roomDetailsTitle = modal.querySelector(".roomDetailsTitle");
   roomDetailsTitle.textContent = packageName;
 
-  const roomDetailsContent = modal.querySelector(".roomDetailsContent");
   const descriptionParagraph = document.createElement("p");
   descriptionParagraph.innerHTML = `<strong>Description:</strong> ${packageDescription}`;
-  roomDetailsContent.insertBefore(
-    descriptionParagraph,
-    roomDetailsContent.firstChild
-  );
+  roomDetailsContent.appendChild(descriptionParagraph);
 
   // Set the amount
   const amountInput = document.getElementById("amount");
   amountInput.value = price.replace("$", "");
 
-  // You can also update the modal's image if desired
-  // const modalImage = modal.querySelector('.roomImage'); // Assuming you have an image element in your modal
+  // Optionally update the modal's image if desired
+  // const modalImage = modal.querySelector('.roomImage');
   // if (modalImage) {
   //   modalImage.src = imageSrc;
   // }
